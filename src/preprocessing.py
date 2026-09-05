@@ -1,7 +1,20 @@
 import re
 from typing import Any
 
+import nltk
 import numpy as np
+
+
+def _ensure_nltk_resource(resource_path: str, package_name: str) -> None:
+    """Download an NLTK resource if it isn't already present on disk."""
+    try:
+        nltk.data.find(resource_path)
+    except LookupError:
+        nltk.download(package_name, quiet=True)
+
+
+_ensure_nltk_resource("corpora/wordnet", "wordnet")
+_ensure_nltk_resource("corpora/omw-1.4", "omw-1.4")
 
 
 def preprocess_text(text: str, preprocessor_bundle: dict[str, Any]) -> str:
