@@ -2,3 +2,7 @@ numpy
 pandas
 scikit-learn
 gensim
+beautifulsoup4
+requests
+nltk
+lxml
